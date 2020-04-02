@@ -1,5 +1,5 @@
 import React ,{useState,useEffect} from 'react';
-import {StyleSheet,AsyncStorage,View } from 'react-native';
+import {StyleSheet,AsyncStorage,View ,Lightbox, Modal} from 'react-native';
 import {Router,Overlay,Scene,Tabs} from 'react-native-router-flux';
 import { Grid, Icon } from '@ant-design/react-native';
 import List from './Components/List';
@@ -51,6 +51,8 @@ const App: () => React$Node = () => {
   return (
     <Router>
       <Overlay>
+      <Modal key="modal" hideNavBar>
+      <Lightbox key="lightbox">
       <Scene key='root'>
         <Tabs key='tabbar' hideNavBar activeTintColor='red'>
         <Scene key='个人中心'
@@ -93,7 +95,9 @@ const App: () => React$Node = () => {
         </Tabs>
       </Scene>
       <Scene initial={!isLogin}  key="login" component={Login} />		
-			<Scene key="register" component={Register} />
+			<Scene key="register" component={Register} />   
+      </Lightbox>
+      </Modal>
       </Overlay>
     </Router>
   );
